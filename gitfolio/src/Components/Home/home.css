@@ -1,0 +1,162 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+
+  scroll-behavior: smooth;
+}
+
+#PageContainer {
+  display: grid;
+  grid-auto-rows: 1fr 1fr 1fr;
+}
+
+.header {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: auto minmax(600px, 1fr) minmax(400px, 1fr);
+  padding: 30px 20px;
+  /* border-top: 10px solid burlywood; */
+
+  /* padding: 8px; */
+  border: 2px dotted lightblue;
+
+  background-color: #000000;
+  ;
+  color: white;
+}
+
+.main {
+  background-color: black;
+  color: white;
+}
+
+.main-intro-container {
+  display: grid;
+  grid-template-areas: ". main-content .";
+  grid-template-columns: 1fr 600px 1fr;
+
+  background-color: #24292e;
+  /* border-bottom: 10px solid burlywood; */
+}
+
+.main-intro-content {
+  grid-area: main-content;
+}
+
+.h1-center {
+  text-align: center;
+}
+
+/* Start ------------- */
+/* Containers ----------------------- */
+
+/* Don't touch this START */
+
+/* This container is not used but its attributes are being used by the header */
+.container {
+  padding: 8px;
+  border: 2px dotted lightblue;
+}
+
+.box {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 4px;
+  border: 2px dotted lightcoral;
+}
+
+.inner-box {
+  min-width: 40px;
+  min-height: 40px;
+  border: 2px dotted lightgreen;
+}
+
+.inner-nav-box {
+  min-width: 40px;
+  min-height: 40px;
+  border: 2px dotted lightgreen;
+}
+
+.logo-box {
+  min-width: 100px;
+  min-height: 50px;
+  padding: 4px;
+  border: 2px dotted lightcoral;
+}
+
+.bg-space-box {
+  min-width: 40px;
+  min-height: 40px;
+  padding: 4px;
+  border: 2px dotted lightcoral;
+}
+
+.nav-box {
+  min-width: 400px;
+  min-height: 40px;
+  padding: 4px;
+  border: 2px dotted lightcoral;
+}
+
+/* Don't touch this END */
+
+/* Write CSS Here */
+
+.three-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+.three-column-grid__expand-two {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+  gap: 4px;
+}
+
+.five-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 4px;
+}
+
+.center-grid {
+  /* padding-left: 500px;
+    padding-right: 500px; */
+  display: grid;
+  justify-content: center;
+}
+
+.centered {
+  width: 200px;
+}
+
+/* Grid within Grid Section */
+/* Practice re-using classes */
+
+.two-column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.two-column-grid__expand-two {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 4px;
+}
+
+.logo {
+  border: 1px solid green;
+  padding: 4px;
+}
+.grid-in-grid2 {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+}
+
+/* Containers ----------------------- */
+
+.gap {
+  gap: 20px;
+}
