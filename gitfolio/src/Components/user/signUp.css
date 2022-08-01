@@ -1,0 +1,77 @@
+/* * {
+    box-sizing: border-box;
+} */
+
+
+/* body {
+    background-color: white;
+} */
+
+/* .signUp-container {
+    display: grid;
+} */
+
+/* .center-wrapper {
+    display: grid;
+    grid-template-columns: ". center .";
+} */
+
+/* .center {
+    grid-area: center;
+    padding: 60px;
+    background-color: lightblue;
+    border-radius: 30px;
+    max-width: 600px;
+    margin-top: 100px;
+    margin-right: 100px;
+    height: 500px;
+}
+
+.stack > * + * {
+    margin-top: 32px;
+} */
+
+/* input, */
+/* select,
+button {
+    border-radius: 8px;
+    border: 1px solid black;
+} */
+
+/* -------------------------------------- pt2 */
+
+.form-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: black; */
+    /* background-color: #130118; */
+    background-image: linear-gradient(to bottom right,#397bff,#510c64);
+}
+
+
+form {
+    display: block;
+    position: relative;
+}
+
+form:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    z-index: 1;
+    background-image: linear-gradient(to bottom right, #FFCE00, #FE4880);
+}
+
+form .form-inner {
+    position: relative;
+    display: block;
+    background-color: #FFF;
+    padding: 100px;
+    z-index: 2;
+}

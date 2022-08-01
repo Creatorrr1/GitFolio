@@ -1,0 +1,66 @@
+.container {
+    /* height: 100vh; */
+    display: grid;
+    grid-template-columns: minmax(600px, auto);
+    height: 725px;
+    width: 1440px;
+    border: 5px solid black;
+    /* align-items: center; */
+    /* justify-content: center; */
+    padding: 20px;
+    /* background-color: black; */
+    /* background-color: #130118; */
+    background-image: linear-gradient(to bottom right,#397bff,#510c64);
+    z-index: 2;
+}
+
+.two-column-grid-page {
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.profile-column {
+    height: 650px;
+    width: 300px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+.exercise-column {
+    height: 650px;
+    width: 1050px;
+    background-color: white;
+    border: 2px solid black;
+}
+
+/* Exercise Column Section */
+
+.grid-auto-rows {
+    display: grid;
+    grid-auto-rows: auto;
+    margin: 30px;
+}
+
+.exercise-auto-column {
+    height: 250px;
+    width: 950px;
+    display: grid;
+    grid-auto-flow: column;
+    /* grid-auto-columns: auto; */
+    /* grid-template-areas: 1fr 1fr 1fr; */
+    justify-content: space-around;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid black;
+}
+
+.exerciseBox {
+    height: 200px;
+    width: 200px;
+    margin-top: 20px;
+    border: 2px solid black;
+}
+
+ul .exerciseBox {
+    list-style-type: none;
+}
