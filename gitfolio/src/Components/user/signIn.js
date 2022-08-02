@@ -33,6 +33,7 @@ function SignIn({Login, fetchedExercises}) {
               'loggedInUser',
               JSON.stringify(res.data.data.user)
             );
+            console.log('res -> ',res.data.data)
             // setLoggedInUser(res.data.data.user);
             // saveFetchedExerciseData(res.data.data.favouriteExercises)
             navigate('../profile', { replace: true });

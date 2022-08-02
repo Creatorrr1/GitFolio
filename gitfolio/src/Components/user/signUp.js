@@ -7,7 +7,7 @@ import './signUp.css';
 
 function SignUp() {
 
-  const [userRegister, setUserRegister] = useState({ username: "", password: "", email: "" })
+  const [userRegister, setUserRegister] = useState({ username: "", password: "", email: "", firstname: "", lastname: "", bio: "" })
   const [errorResponse, setErrorResponse] = useState({ status: '' });
   let navigate = useNavigate();
 
@@ -52,6 +52,21 @@ function SignUp() {
             <div className='form-group'>
             <label htmlFor="email">Email : </label>
             <input type="email" name="email" id="email" placeholder="Type email" onChange={e => setUserRegister({...userRegister, email: e.target.value})} value={userRegister.email}/>
+            </div>
+            <br></br>
+            <div className='form-group'>
+            <label htmlFor="firstname">Firstname : </label>
+            <input type="text" name="firstname" id="firstname" placeholder="Type firstname" onChange={e => setUserRegister({...userRegister, firstname: e.target.value})} value={userRegister.firstname}/>
+            </div>
+            <br></br>
+            <div className='form-group'>
+            <label htmlFor="lastame">Lastname : </label>
+            <input type="text" name="lastame" id="lastame" placeholder="Type lastname" onChange={e => setUserRegister({...userRegister, lastname: e.target.value})} value={userRegister.lastname}/>
+            </div>
+            <br></br>
+            <div className='form-group'>
+            <label htmlFor="bio">Bio : </label>
+            <input type="text" name="bio" id="bio" placeholder="Type your Bio here ..." onChange={e => setUserRegister({...userRegister, bio: e.target.value})} value={userRegister.bio}/>
             </div>
             <br></br>
             <p> {errorResponse.status === 400 && errorResponse.data.data.username} </p>

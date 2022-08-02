@@ -7,13 +7,18 @@ function Profile({favouriteExercises, setFavouriteExercises}) {
     <>
     <div className='container'>
         <div className='two-column-grid-page'>
-            <div className='profile-column'></div>
+            <div className='profile-column'>
+                <div className='two-profile-row-grid gap-sm'>
+                <div className='profile-pic-box'></div>
+                <div className='profile-data-box'></div>
+                </div>
+            </div>
             <div className='exercise-column'>
                 {/* auto rows with 3 exercise max for each row */
                  // map favourite exercise here 
                  // in the meantime manually add the rows 
                 }
-                <div className='grid-auto-rows'>
+                <div className='grid-auto-rows gap-sm'>
                     <ul className='exercise-auto-column'>
                         <li className='exerciseBox'></li>
                         <li className='exerciseBox'></li>
