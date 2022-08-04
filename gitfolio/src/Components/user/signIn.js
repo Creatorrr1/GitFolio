@@ -59,6 +59,8 @@ function SignIn({Login, fetchedExercises}) {
 
     return (
       <>
+    {/* <video className='video-2' src='/assets/videos/video-1.mp4' autoPlay loop muted /> */}
+
       <div className='form-container'>
       <form onSubmit={submitHandler}>
         <div className='form-inner'>
@@ -84,6 +86,7 @@ function SignIn({Login, fetchedExercises}) {
         </div>
       </form>
       </div>
+    {/* </video> */}
       </>
     );
 }

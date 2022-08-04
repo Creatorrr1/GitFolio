@@ -1,6 +1,14 @@
 import "./headerNav.css";
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 function HeaderNav() {
+
+  let navigate = useNavigate();
+
+  const goProfile = () => {
+    navigate(`../profile/:id`, { replace: true });
+  }
   return (
     <>
       <div id="PageContainer">
@@ -19,7 +27,7 @@ function HeaderNav() {
             <div class="inner-nav-search search-icon">
               {/* <form className='two-column-grid__expand-one'> */}
               <input type='text' name='text' className='search-box'></input>
-              <input type='submit' name='search' className='search'></input>
+              <input type='submit' name='search' className='search' onSubmit={goProfile}></input>
               {/* </form> */}
             </div>
             <div class="inner-nav-box">

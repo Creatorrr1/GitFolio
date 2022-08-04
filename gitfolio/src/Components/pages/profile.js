@@ -14,6 +14,7 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
     // another useEffect for exercises also watching the params and fetching by id
     const params = useParams();
     const [addExercise, setAddExercise] = useState({githubImage: "", githubUrl: ""})
+    const [addExercises, setAddExercises] = useState({githubImage: '', githubUrl: ''})
     const [exerciseResponse, setExerciseResponse] = useState('')
     const [error, setError] = useState(true)
 
@@ -30,7 +31,7 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
           });
     }, [params]);
 
-    // console.log(userData)
+    console.log(userData)
 
     const createFavouriteExercise = async (event) => {
 		setError(false);
@@ -40,7 +41,9 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
 			setExerciseResponse(res.data);
             console.log('Added Exercise Response -->', exerciseResponse.status)
 			const res2 = await client.get('/favouriteExercises');
-			setFavouriteExercises(res2.data.data.posts);
+			// setFavouriteExercises(res2.data.data.favouriteExercise);
+            setAddExercises(res2.data.data.favouriteExercise)
+            console.log('favouriteExercise --> ', res2.data.data.favouriteExercise)
 		} catch (err) {
 			setError(err.response.data.data.err);
 		}
@@ -84,13 +87,14 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                 }
                 <div className='add-exercise-row'>
                     <div className='add-exercise-box'>
-                        <form className='' onSubmit={createFavouriteExercise}>
+                        {/* <form id='exerciseForm' onSubmit={createFavouriteExercise}> */}
                             <div className='two-search-column-grid'>
                             <input
                                 className='exercise-input gap-inputs'
                                 type='text'
-                                label='Add Exercise Image'
-                                variant='outlined'
+                                // label='Add Exercise Image'
+                                placeholder='Add Exercise Image'
+                                // variant='outlined'
                                 name='githubImage'
                                 value={addExercise.githubImage}
                                 onChange={e => setAddExercise({...addExercise, githubImage: e.target.value})} 
@@ -98,28 +102,40 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                             <input
                                 className='exercise-input gap-inputs'
                                 type='text'
-                                label='Add Exercise Github url'
-                                variant='outlined'
+                                // label='Add Exercise Github url'
+                                placeholder='Add Exercise Github url'
+                                // variant='outlined'
                                 name='githubUrl'
                                 value={addExercise.githubUrl}
                                 onChange={e => setAddExercise({...addExercise, githubUrl: e.target.value})} 
                                 ></input>
-                                </div>
-                        <button type='submit' variant='contained' className='exercise-add-btn' onSubmit={createFavouriteExercise}>
-                            Add favouriteExercise
+                        <button type='submit' 
+                                // variant='contained' 
+                                className='exercise-add-btn' 
+                                onClick={createFavouriteExercise}>
+                        Add favouriteExercise
                         </button>
-                        </form>
+                                </div>
+                        {/* </form> */}
                     </div>
                 </div>
                 <div className='grid-auto-rows gap-sm '>
                     <ul className='exercise-auto-column'>
                         <li className='exerciseBox'>
-                        <div className='git-img-box'></div>
+                        <div className='git-img-box'>
+                            { addExercises.githubImage !== '' ?
+                            <img src={addExercises.githubImage} alt='github-img'/> : <div><p>add image</p></div>
+                            }
+                        </div>
                             {/* <div className='git-img-box'>{error ? favouriteExercises.githubImage : <p>none</p>}</div> */}
                             {/* <p>Status: {exerciseResponse.status}</p> */}
                             <div className='git-url-box'>
                             <div>Highlighted-Project: </div>
-                                {/* <div><a href={favouriteExercises.githubUrl} className='a-url-max-size'>{favouriteExercises.githubUrl}</a></div> */}
+                            {
+                                addExercises.githubUrl !== '' ?
+                                <div><a href={addExercises.githubUrl} className='a-url-max-size'>{addExercises.githubUrl}</a></div>
+                                : <div><p>add url</p></div>
+                            }
                             </div>
                         </li>
                         <li className='exerciseBox'>
