@@ -7,7 +7,7 @@ import './signUp.css';
 
 function SignUp() {
 
-  const [userRegister, setUserRegister] = useState({ username: "", password: "", email: "", firstname: "", lastname: "", bio: "" })
+  const [userRegister, setUserRegister] = useState({ username: "", password: "", email: "", firstname: "", lastname: "", bio: "" , profileImage: ""})
   const [errorResponse, setErrorResponse] = useState({ status: '' });
   let navigate = useNavigate();
 
@@ -21,7 +21,7 @@ function SignUp() {
         localStorage.setItem('loggedInUser', JSON.stringify(res.data.data.user));
         // setLoggedInUser(res.data.data.user)
         console.log('res made')
-        navigate('../profile', { replace: true });
+        navigate(`../profile/${res.data.data.user.id}`, { replace: true });
     })
     .catch((err) => { 
       console.log('in catch')
@@ -67,6 +67,11 @@ function SignUp() {
             <div className='form-group'>
             <label htmlFor="bio">Bio : </label>
             <input type="text" name="bio" id="bio" placeholder="Type your Bio here ..." onChange={e => setUserRegister({...userRegister, bio: e.target.value})} value={userRegister.bio}/>
+            </div>
+            <br></br>
+            <div className='form-group'>
+            <label htmlFor="profileImage">Profile Image : </label>
+            <input type="text" name="profileImage" id="profileImage" placeholder="Add your profile image here ..." onChange={e => setUserRegister({...userRegister, profileImage: e.target.value})} value={userRegister.profileImage}/>
             </div>
             <br></br>
             <p> {errorResponse.status === 400 && errorResponse.data.data.username} </p>

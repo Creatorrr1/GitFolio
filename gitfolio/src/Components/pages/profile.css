@@ -4,7 +4,7 @@
     grid-template-columns: minmax(600px, auto);
     height: 725px;
     width: 1440px;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     /* align-items: center; */
     /* justify-content: center; */
     padding: 20px;
@@ -17,20 +17,29 @@
 .two-column-grid-page {
     display: grid;
     grid-template-columns: 1fr auto;
+    background-image: linear-gradient(to bottom right, #397bff, #510c64);
 }
 
 .profile-column {
-    height: 650px;
+    height: 670px;
     width: 300px;
     background-color: white;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    /* background-image: linear-gradient(to bottom right, #FFCE00, #FE4880); */
+    /* background-image: linear-gradient(to bottom right, #510c64,black); */
+    /* background-image: linear-gradient(to bottom right, #510c64, #397bff); */
+    background-image: linear-gradient(to bottom right, #397bff, #510c64);
+
 }
 
 .exercise-column {
-    height: 650px;
+    height: 670px;
     width: 1050px;
     background-color: white;
-    border: 2px solid black;
+    /* padding-right: 1000px; */
+    /* border: 2px solid black; */
+    /* background-image: linear-gradient(to bottom right, 510c64,black); */
+    background-image: linear-gradient(to bottom right, #397bff, #510c64);
 }
 
 /* Profile Column Section */
@@ -39,24 +48,67 @@
     display: grid;
     grid-auto-rows: auto;
     margin: 30px;
+    background-color: white;
 }
 
 .profile-pic-box {
     height: 200px;
-    width: 235px;
+    width: 200px;
     /* margin-top: 20px; */
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    background-color: white;
+    border-radius: 1000px;
+    margin-left: 20px;
+    /* background-image: linear-gradient(to bottom right, #FFCE00, #FE4880); */
 }
 
 .profile-data-box {
     height: 350px;
     width: 235px;
     /* margin-top: 20px; */
+    /* border: 2px solid black; */
+    /* background-color: white; */
+}
+
+.user-info-box {
+    height: 50px;
+    width: 239px;
+    background-color: white;
     border: 2px solid black;
+    /* justify-items: center; */
+}
+
+div .user-info-box {
+    /* align-items: center; */
+    /* justify-items: center; */
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.user-info-bio-box {
+    height: 100px;
+    width: 239px;
+    background-color: white;
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+
+.gap {
+    gap: 30px; 
 }
 
 .gap-sm {
     gap: 30px;
+    /* background-image: linear-gradient(to bottom right, 510c64,black); */
+    background-image: linear-gradient(to bottom right, #397bff, #510c64);
+}
+
+.gap-sm-1 {
+    gap: 30px;
+    /* background-image: linear-gradient(to bottom right, #FFCE00, #FE4880); */
+    /* background-image: linear-gradient(to bottom right, black,#510c64); */
+    /* background-image: linear-gradient(to bottom right, #510c64,black); */
+    background-image: linear-gradient(to bottom right, #397bff, #510c64);
 }
 
 /* Exercise Column Section */
@@ -64,7 +116,10 @@
 .grid-auto-rows {
     display: grid;
     grid-auto-rows: auto;
-    margin: 30px;
+    /* margin: 30px; */
+    height: 555px;
+    padding-left: 50px;
+    background-image: none;
 }
 
 .exercise-auto-column {
@@ -77,16 +132,112 @@
     justify-content: space-around;
     padding: 5px;
     margin: 10px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
 }
 
 .exerciseBox {
     height: 200px;
     width: 200px;
     margin-top: 20px;
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    background-color: white;
+    border-radius: 40px;
 }
 
 ul .exerciseBox {
     list-style-type: none;
+}
+
+.git-img-box {
+    height: 120px;
+    width: 200px;
+    margin: 0px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 40px;
+    border: solid 2px black;
+    /* background-color: black; */
+}
+
+.git-img {
+    height: 120px;
+    width: 197px;
+    margin: 0px;
+    border-top-right-radius: 40px;
+    border-top-left-radius: 37px;
+}
+
+.git-url-box {
+    height: 80px;
+    width: 200px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border: solid 2px black;
+}
+
+.git-url-box div a {
+    max-height: 80px;
+    max-width: 200px;
+    /* border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px; */
+}
+a-url-max-size {
+    max-height: 80px;
+    max-width: 200px;
+}
+
+/* Add exercise */
+
+form:after {
+    /* background-color: white; */
+    background-image: none;
+    color: black;
+}
+
+.add-exercise-row {
+    /* height: 120px; */
+    width: 1050px;
+    /* background-color: white; */
+    /* border: 2px solid black; */
+    padding: 10px;
+    /* padding-bottom: 20px; */
+    
+}
+
+.add-exercise-box {
+    height: 90px;
+    width: 990px;
+    /* background-color: white; */
+    /* background-image: linear-gradient(to bottom right, #397bff, #510c64); */
+    /* border: 2px solid black; */
+    /* align-items: center; */
+    padding: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.exercise-input {
+    padding: 3px;
+    height: 50px;
+    width: 400px;
+    border-radius: 30px;
+    font-size: 16px;
+    margin-top: 7px;
+    /* margin-top: 50px; */
+}
+
+.exercise-add-btn {
+    background-color: #510c64;
+    color: white;
+    margin-top: 7px;
+    margin-left: 7px;
+    padding: 5px;
+    padding-top: 7px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 100px;
+}
+
+.gap-inputs {
+    margin: 10px;
 }

@@ -20,7 +20,7 @@ function SignIn({Login, fetchedExercises}) {
       }, []);
 
     const loginUser = (event) => {
-        console.log('in loginUser()')
+        console.log('in loginUser() and making request')
         client
           .post('/login', details, false)
         //   .then((data) => data.json())
@@ -36,13 +36,12 @@ function SignIn({Login, fetchedExercises}) {
             console.log('res -> ',res.data.data)
             // setLoggedInUser(res.data.data.user);
             // saveFetchedExerciseData(res.data.data.favouriteExercises)
-            navigate('../profile', { replace: true });
-            console.log('res made')
+            navigate(`../profile/:id`, { replace: true });
+            Login(res.data.data.data.id)
           })
           .catch((err) => {
-            console.log('In Catch')
-            console.log('err response in catch', err)
-            // setLoginError(err.response);
+            console.log('err response in catch ->',err.response.status, err.response.data.message)
+            // setLoginError(err.response.status, err.response.data.message);
           });
     };
 

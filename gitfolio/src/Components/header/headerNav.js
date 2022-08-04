@@ -23,7 +23,7 @@ function HeaderNav() {
               {/* </form> */}
             </div>
             <div class="inner-nav-box">
-              <Link to ='/profile' className='link'><div className='nav-text'>Profile</div></Link>
+              <Link to ='/profile/:id' className='link'><div className='nav-text'>Profile</div></Link>
             </div>
             <div class="inner-nav-box">
             <Link to="/sign-in" className='link'><div className='nav-text'>Sign In</div></Link>

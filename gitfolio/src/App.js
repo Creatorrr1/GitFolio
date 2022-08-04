@@ -11,19 +11,21 @@ import './App.css';
 function App() {
 
   const [user, setUser] = useState({ username: "", password: "", email: "" })
-  const [favouriteExercise, setFavouriteExercise] = useState({})
+  const [userID, setUserID] = useState("")
+  const [favouriteExercises, setFavouriteExercises] = useState({})
 
-  const Login = details => {
-    console.log(details)
+  const Login = detailsID => {
+    console.log(detailsID)
+    setUserID(detailsID)
   }
 
   const fetchedExercises = allSavedExercises => {
-    setFavouriteExercise(allSavedExercises)
+    setFavouriteExercises(allSavedExercises)
   }
 
-  const Logout = () => {
-    console.log("Logout")
-  }
+  // const Logout = () => {
+  //   console.log("Logout")
+  // }
 
   return (
     <div className="App">
@@ -33,7 +35,7 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/sign-up' element={<SignUp/>} />
         <Route path='/sign-in' element={<SignIn Login={Login} fetchedExercises={fetchedExercises}/>} />
-        <Route path='/profile' element={<Profile setFavouriteExercise={setFavouriteExercise} favouriteExercise={favouriteExercise}/>} />
+        <Route path='/profile/:id' element={<Profile setFavouriteExercise={setFavouriteExercises} favouriteExercise={favouriteExercises} userID={userID}/>} />
       </Routes>
     </div>
   );
