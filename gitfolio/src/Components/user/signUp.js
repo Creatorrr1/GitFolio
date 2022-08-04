@@ -21,7 +21,8 @@ function SignUp() {
         localStorage.setItem('loggedInUser', JSON.stringify(res.data.data.user));
         // setLoggedInUser(res.data.data.user)
         console.log('res made')
-        navigate(`../profile/${res.data.data.user.id}`, { replace: true });
+        navigate(`../profile/:id`, { replace: true });
+        // navigate(`../profile/${res.data.data.user.id}`, { replace: true });
     })
     .catch((err) => { 
       console.log('in catch')
@@ -31,6 +32,7 @@ function SignUp() {
 
   return (
     <>
+    {/* <video className='video-2' src='/assets/videos/video-1.mp4' autoPlay loop muted /> */}
        <div className="form-container">
           <form onSubmit={registerUser}>
           <div className='form-inner'>

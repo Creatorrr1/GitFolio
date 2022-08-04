@@ -52,7 +52,9 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
         <div className='two-column-grid-page'>
             <div className='profile-column'>
                 <div className='two-profile-row-grid gap-sm-1'>
-                <div className='profile-pic-box'></div>
+                <div className='profile-pic-box'>
+                <img src='/assets/ape.png' alt='todo image' className='profile-img transparent'/>
+                </div>
                 <div className='profile-data-box gap'>
                     <div className='user-info-box'>
                     <div>Username: {userData.username}</div>
@@ -83,7 +85,7 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                 <div className='add-exercise-row'>
                     <div className='add-exercise-box'>
                         <form className='' onSubmit={createFavouriteExercise}>
-                            <div className='two-search-row-grid'>
+                            <div className='two-search-column-grid'>
                             <input
                                 className='exercise-input gap-inputs'
                                 type='text'
@@ -92,7 +94,7 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                                 name='githubImage'
                                 value={addExercise.githubImage}
                                 onChange={e => setAddExercise({...addExercise, githubImage: e.target.value})} 
-                                ></input>
+                                />
                             <input
                                 className='exercise-input gap-inputs'
                                 type='text'
@@ -130,7 +132,9 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                             </div>
                         </li>
                         <li className='exerciseBox'>
-                            <div className='git-img-box'></div>
+                            <div className='git-img-box'>
+                            <img src='/assets/pokemon.png' alt='todo image' className='git-img'/>
+                            </div>
                             <div className='git-url-box'>
                             <div>Highlighted-Project: </div>
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div>
@@ -139,20 +143,26 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                     </ul>
                     <ul className='exercise-auto-column'>
                         <li className='exerciseBox'>
-                            <div className='git-img-box'></div>
+                            <div className='git-img-box'>
+                            <img src='/assets/black.png' alt='todo image' className='git-img'/>
+                            </div>
                             <div className='git-url-box'>                                
                             <div>Highlighted-Project: </div>
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div></div>
                         </li>
                         <li className='exerciseBox'>
-                            <div className='git-img-box'></div>
+                            <div className='git-img-box'>
+                            <img src='/assets/weather.png' alt='todo image' className='git-img'/>
+                            </div>
                             <div className='git-url-box'>
                             <div>Highlighted-Project: </div>
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div>
                             </div>
                         </li>
                         <li className='exerciseBox'>
-                            <div className='git-img-box'></div>
+                            <div className='git-img-box'>
+                            <img src='/assets/cohort.png' alt='todo image' className='git-img'/>
+                            </div>
                             <div className='git-url-box'>
                             <div>Highlighted-Project: </div>
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div>
