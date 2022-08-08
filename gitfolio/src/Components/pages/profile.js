@@ -122,23 +122,6 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                 <div className='grid-auto-rows gap-sm '>
                     <ul className='exercise-auto-column'>
                         <li className='exerciseBox'>
-                        <div className='git-img-box'>
-                            { addExercises.githubImage !== '' ?
-                            <img src={addExercises.githubImage} alt='github-img'/> : <div><p>add image</p></div>
-                            }
-                        </div>
-                            {/* <div className='git-img-box'>{error ? favouriteExercises.githubImage : <p>none</p>}</div> */}
-                            {/* <p>Status: {exerciseResponse.status}</p> */}
-                            <div className='git-url-box'>
-                            <div>Highlighted-Project: </div>
-                            {
-                                addExercises.githubUrl !== '' ?
-                                <div><a href={addExercises.githubUrl} className='a-url-max-size'>{addExercises.githubUrl}</a></div>
-                                : <div><p>add url</p></div>
-                            }
-                            </div>
-                        </li>
-                        <li className='exerciseBox'>
                             <div className='git-img-box'>
                                 <img src='/assets/todo-github-image.png' alt='todo image' className='git-img'/>
                                 </div>
@@ -156,8 +139,6 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div>
                             </div>
                         </li>
-                    </ul>
-                    <ul className='exercise-auto-column'>
                         <li className='exerciseBox'>
                             <div className='git-img-box'>
                             <img src='/assets/black.png' alt='todo image' className='git-img'/>
@@ -166,6 +147,8 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                             <div>Highlighted-Project: </div>
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div></div>
                         </li>
+                    </ul>
+                    <ul className='exercise-auto-column'>
                         <li className='exerciseBox'>
                             <div className='git-img-box'>
                             <img src='/assets/weather.png' alt='todo image' className='git-img'/>
@@ -182,6 +165,23 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                             <div className='git-url-box'>
                             <div>Highlighted-Project: </div>
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div>
+                            </div>
+                        </li>
+                        <li className='exerciseBox'>
+                        <div className='git-img-box'>
+                            { addExercises.githubImage !== '' ?
+                            <img src={addExercises.githubImage} alt='github-img'/> : <div><p>add image</p></div>
+                            }
+                        </div>
+                            {/* <div className='git-img-box'>{error ? favouriteExercises.githubImage : <p>none</p>}</div> */}
+                            {/* <p>Status: {exerciseResponse.status}</p> */}
+                            <div className='git-url-box'>
+                            <div>Highlighted-Project: </div>
+                            {
+                                addExercises.githubUrl !== '' ?
+                                <div><a href={addExercises.githubUrl} className='a-url-max-size'>{addExercises.githubUrl}</a></div>
+                                : <div><p>add url</p></div>
+                            }
                             </div>
                         </li>
                     </ul>
