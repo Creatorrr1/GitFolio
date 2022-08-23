@@ -21,6 +21,14 @@ const client = {
     }
     return axios.post(url, data, { headers });
   },
+
+  delete: (path) => {
+		const url = `${host}${path}`;
+		const headers = {
+			Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+		};
+		return axios.delete(url,{ headers });
+	}
 };
 
 export default client;

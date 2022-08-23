@@ -1,29 +1,56 @@
 import React from 'react';
 import './profile.css'
-import '../../App.css';
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+// import '../../App.css';
+import { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { loggedInUserContext } from '../../helper/loggedInUserContext.js';
 import client from "../../client";
 // import TextField from '@mui/material/TextField';
 // import Button from '@mui/material/Button';
 
 function Profile({favouriteExercises, setFavouriteExercises, userID}) {
-
+    const { loggedInUser } = useContext(loggedInUserContext);
     const [userData, setUserData] = useState({});
     const [isValidId, setIsValidId] = useState(true);
     // another useEffect for exercises also watching the params and fetching by id
     const params = useParams();
-    const [addExercise, setAddExercise] = useState({githubImage: "", githubUrl: ""})
-    const [addExercises, setAddExercises] = useState({githubImage: '', githubUrl: ''})
+    const [addExercise, setAddExercise] = useState({githubImage: "", githubUrl: "", profileId: ""})
+    const [addExercises, setAddExercises] = useState("")
     const [exerciseResponse, setExerciseResponse] = useState('')
     const [error, setError] = useState(true)
+    // const [checkParams, setCheckParams] = useState(false)
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        const loadedToken = localStorage.getItem(process.env.REACT_APP_USER_TOKEN) || '';
+        if (!loadedToken) {
+            navigate("/");
+          }
+    },[])
+
+    // if(checkParams) {
+    //     navigate(`../`, { replace: true });
+    // }
+
+    // useEffect(() => {
+    //     let profileId = params.id
+    //     if (profileId === undefined) {
+    //         setCheckParams(true)
+    //     }
+    //     if (profileId === ':id') {
+    //         setCheckParams(true)
+    //     }
+    // }
+    // ,[params])
 
     useEffect(() => {
         client
-          .get(`/user/${userID}`)
+          .get(`/user/${loggedInUser.id}`)
           .then((res) => {
             setUserData(res.data.data);
             console.log('id is valid? : ', isValidId)
+            // console.log('USER Data -> ', res.data.data)
+            setAddExercise({...addExercise, profileId: res.data.data.profileId})
           })
           .catch((err) => {
             setIsValidId(false);
@@ -31,7 +58,7 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
           });
     }, [params]);
 
-    console.log(userData)
+    // console.log('USER Data -> ', userData)
 
     const createFavouriteExercise = async (event) => {
 		setError(false);
@@ -41,13 +68,41 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
 			setExerciseResponse(res.data);
             console.log('Added Exercise Response -->', exerciseResponse.status)
 			const res2 = await client.get('/favouriteExercises');
-			// setFavouriteExercises(res2.data.data.favouriteExercise);
-            setAddExercises(res2.data.data.favouriteExercise)
-            console.log('favouriteExercise --> ', res2.data.data.favouriteExercise)
+            setAddExercises(res2.data.data.favouriteExercises)
+			// setFavouriteExercises(res2.data.data.favouriteExercises);
+            console.log('favouriteExerciseData Res -> ', res2.data.data.favouriteExercises)
 		} catch (err) {
 			setError(err.response.data.data.err);
 		}
 	};
+    
+    console.log('FavouriteExercisesData -> ',addExercises)
+
+    useEffect(() => {
+        client
+          .get('/favouriteExercises')
+          .then((res) => {
+            // console.log('all data fetched in profile', res.data)
+            setAddExercises(res.data.data.favouriteExercises)
+			// setFavouriteExercises(res.data.data.favouriteExercises);
+            console.log('favouriteExerciseData UseEffect fetch -> ', res.data.data.favouriteExercises)
+          })
+          .catch((err) => {
+            console.log(err)
+          });
+    }, [params]);
+
+    const fExerciseDlt = (event, exerciseId) => {
+        event.preventDefault()
+        client
+        .delete(`/favouriteExercises/${exerciseId}`)
+        .then((res) => {
+            console.log('res for fExerciseDlt', res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 
   return (
     <>
@@ -121,7 +176,31 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                 </div>
                 <div className='grid-auto-rows gap-sm '>
                     <ul className='exercise-auto-column'>
-                        <li className='exerciseBox'>
+                        { addExercises && addExercises.map((exercise,index) => (
+                         <li className='exerciseBox' key={index}>
+                            <div className='git-img-box'>
+                            { exercise.githubImage !== '' ?
+                            <img src={exercise.githubImage} alt='github-img' className='git-img'/> : <div><p>add image</p></div>
+                            }  
+                            </div>
+                            <div className='git-url-box'>
+                            <div>Highlighted-Project: </div>
+                            {
+                                exercise.githubUrl !== '' ?
+                                <div>
+                                    <a href={exercise.githubUrl} className='a-url-max-size'>{exercise.githubUrl}</a>
+                                    {/* <button>Delete</button> */}
+                                </div>
+                                : <div>
+                                    <p>add url</p>
+                                  </div>
+                            }
+                            <button className='fExerciseDltBtn' onClick={(event) => {fExerciseDlt(event, exercise.id)}}>Delete</button>
+                            </div>
+                        </li>
+                        ))
+                        }
+                        {/* <li className='exerciseBox'>
                             <div className='git-img-box'>
                                 <img src='/assets/todo-github-image.png' alt='todo image' className='git-img'/>
                                 </div>
@@ -166,24 +245,22 @@ function Profile({favouriteExercises, setFavouriteExercises, userID}) {
                             <div>Highlighted-Project: </div>
                                 <div><a href='https://github.com/Creatorrr1/js-dom-pokemon-cards' className='a-url-max-size'>https://github.com/Creatorrr1/js-dom-pokemon-cards</a></div>
                             </div>
-                        </li>
+                        </li> 
                         <li className='exerciseBox'>
                         <div className='git-img-box'>
-                            { addExercises.githubImage !== '' ?
-                            <img src={addExercises.githubImage} alt='github-img'/> : <div><p>add image</p></div>
-                            }
+                        { addExercise[0].githubImage !== '' ?
+                        <img src={addExercise[0].githubImage} alt='github-img' className='git-img'/> : <div><p>add image</p></div>
+                        }  
                         </div>
-                            {/* <div className='git-img-box'>{error ? favouriteExercises.githubImage : <p>none</p>}</div> */}
-                            {/* <p>Status: {exerciseResponse.status}</p> */}
-                            <div className='git-url-box'>
-                            <div>Highlighted-Project: </div>
-                            {
-                                addExercises.githubUrl !== '' ?
-                                <div><a href={addExercises.githubUrl} className='a-url-max-size'>{addExercises.githubUrl}</a></div>
-                                : <div><p>add url</p></div>
-                            }
-                            </div>
-                        </li>
+                        <div className='git-url-box'>
+                        <div>Highlighted-Project: </div>
+                        {
+                            addExercise[0].githubUrl !== '' ?
+                            <div><a href={addExercise[0].githubUrl} className='a-url-max-size'>{addExercise[0].githubUrl}</a></div>
+                            : <div><p>add url</p></div>
+                        }
+                        </div>
+                    </li> */}
                     </ul>
                 </div>
             </div>

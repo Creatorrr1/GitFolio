@@ -1,16 +1,22 @@
 // import "../Home";
 // import { Link } from 'react-router-dom';
-import { useState} from 'react'
+import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import client from '../../client';
 import './signUp.css';
+import { loggedInUserContext } from '../../helper/loggedInUserContext.js';
 
 function SignUp() {
 
   const [userRegister, setUserRegister] = useState({ username: "", password: "", email: "", firstname: "", lastname: "", bio: "" , profileImage: ""})
   const [errorResponse, setErrorResponse] = useState({ status: '' });
+  const [saveUser, setSaveUser] = useState({})
+  const { loggedInUser, setLoggedInUser } = useContext(loggedInUserContext);
   let navigate = useNavigate();
 
+  const obj = []
+  console.log('SavedUser >>>>',saveUser)
+  
   const registerUser = (event) => {
     console.log('in registerUser()')
     event.preventDefault();
@@ -18,10 +24,11 @@ function SignUp() {
     .post('/user', userRegister, false)
     .then((res) => {
         localStorage.setItem(process.env.REACT_APP_USER_TOKEN, res.data.data.token);
-        localStorage.setItem('loggedInUser', JSON.stringify(res.data.data.user));
-        // setLoggedInUser(res.data.data.user)
+        localStorage.setItem('loggedInUser', JSON.stringify(res.data.data.data));
+        setSaveUser(res.data.data.user)
+        setLoggedInUser(res.data.data.data)
         console.log('res made')
-        navigate(`../profile/:id`, { replace: true });
+        navigate(`../profile/${loggedInUser.id}`, { replace: true });
         // navigate(`../profile/${res.data.data.user.id}`, { replace: true });
     })
     .catch((err) => { 

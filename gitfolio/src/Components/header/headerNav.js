@@ -23,12 +23,15 @@ function HeaderNav() {
           <div class="bg-space-box expand">
             <div class="inner-empty-expand-box width-sm"></div>
           </div>
-          <div class="nav-box four-column-grid gap">
+          <div class="nav-box five-column-grid-header gap">
             <div class="inner-nav-search search-icon">
               {/* <form className='two-column-grid__expand-one'> */}
               <input type='text' name='text' className='search-box'></input>
               <input type='submit' name='search' className='search' onSubmit={goProfile}></input>
               {/* </form> */}
+            </div>
+            <div class="inner-nav-box">
+              <Link to ='/browse' className='link'><div className='nav-text'>Browse</div></Link>
             </div>
             <div class="inner-nav-box">
               <Link to ='/profile/:id' className='link'><div className='nav-text'>Profile</div></Link>

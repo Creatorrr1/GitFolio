@@ -1,9 +1,10 @@
 // import "../Home";
 // import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 import client from '../../client.js';
 import './signIn.css'
+import { loggedInUserContext } from '../../helper/loggedInUserContext.js';
 
 
 function SignIn({Login, fetchedExercises}) {
@@ -13,11 +14,12 @@ function SignIn({Login, fetchedExercises}) {
     let navigate = useNavigate();
     const [loginError, setLoginError] = useState(false);
     const [loginResponse, setLoginResponse] = useState("")
+    const { loggedInUser, setLoggedInUser } = useContext(loggedInUserContext);
 
     useEffect(() => {
         const loadedToken = localStorage.getItem(process.env.REACT_APP_USER_TOKEN) || '';
         setLoginResponse({ data: { token: loadedToken } });
-      }, []);
+    }, []);
 
     const loginUser = (event) => {
         console.log('in loginUser() and making request')
@@ -31,16 +33,17 @@ function SignIn({Login, fetchedExercises}) {
             );
             localStorage.setItem(
               'loggedInUser',
-              JSON.stringify(res.data.data.user)
+              JSON.stringify(res.data.data.data)
             );
             console.log('res -> ',res.data.data)
-            // setLoggedInUser(res.data.data.user);
+            setLoggedInUser(res.data.data.data);
             // saveFetchedExerciseData(res.data.data.favouriteExercises)
-            navigate(`../profile/:id`, { replace: true });
+            console.log('USERId -->', res.data.data.data.id)
+            navigate(`../profile/${loggedInUser.id}`, { replace: true });
             Login(res.data.data.data.id)
           })
           .catch((err) => {
-            console.log('err response in catch ->',err.response.status, err.response.data.message)
+            console.log('err response in catch ->', err)
             // setLoginError(err.response.status, err.response.data.message);
           });
     };

@@ -274,3 +274,12 @@ form:after {
 /* #exerciseForm {
 
 } */
+.fExerciseDltBtn {
+    background-color: purple;
+    color: white;
+    height: 15px;
+    width: 60px;
+    border-radius: 20px;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
