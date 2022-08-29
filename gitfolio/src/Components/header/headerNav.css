@@ -152,6 +152,12 @@
   gap: 4px;
 }
 
+.auto-column-grid-header {
+  display: grid;
+  grid-template-columns: 250px repeat(5, auto);
+  gap: 4px;
+}
+
 .five-column-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -226,6 +232,14 @@
   /* font-family: Verdana, Geneva, Tahoma, sans-serif */
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
+}
+
+.logout-link {
+  background-color: black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  border: none;
 }
 
 .nav-text {

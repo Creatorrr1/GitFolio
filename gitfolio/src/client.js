@@ -28,7 +28,16 @@ const client = {
 			Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
 		};
 		return axios.delete(url,{ headers });
-	}
+	},
+
+  getAll: (path) => {
+    const url = `${host}${path}`;
+    // const headers = {
+    //   Authorization: `Bearer ${localStorage.getItem(tokenKey)}`,
+    // };
+
+    return axios.get(url);
+  },
 };
 
 export default client;

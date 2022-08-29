@@ -10,12 +10,12 @@ function SignUp() {
 
   const [userRegister, setUserRegister] = useState({ username: "", password: "", email: "", firstname: "", lastname: "", bio: "" , profileImage: ""})
   const [errorResponse, setErrorResponse] = useState({ status: '' });
-  const [saveUser, setSaveUser] = useState({})
+  // const [saveUser, setSaveUser] = useState({})
   const { loggedInUser, setLoggedInUser } = useContext(loggedInUserContext);
   let navigate = useNavigate();
 
-  const obj = []
-  console.log('SavedUser >>>>',saveUser)
+  // const obj = []
+  // console.log('SavedUser >>>>',saveUser)
   
   const registerUser = (event) => {
     console.log('in registerUser()')
@@ -24,15 +24,16 @@ function SignUp() {
     .post('/user', userRegister, false)
     .then((res) => {
         localStorage.setItem(process.env.REACT_APP_USER_TOKEN, res.data.data.token);
-        localStorage.setItem('loggedInUser', JSON.stringify(res.data.data.data));
-        setSaveUser(res.data.data.user)
-        setLoggedInUser(res.data.data.data)
-        console.log('res made')
-        navigate(`../profile/${loggedInUser.id}`, { replace: true });
+        localStorage.setItem('loggedInUser', JSON.stringify(res.data.data));
+        // setSaveUser(res.data.data.user)
+        setLoggedInUser(res.data.data.id)
+        console.log('res made', res.data.data)
+        navigate(`../profile/${res.data.data.id}`, { replace: true });
         // navigate(`../profile/${res.data.data.user.id}`, { replace: true });
     })
     .catch((err) => { 
       console.log('in catch')
+      console.log('err ->',err)
       setErrorResponse(err.response)
     });
   };
@@ -47,12 +48,12 @@ function SignUp() {
             <br></br>
             <div className='form-group'>
             <label htmlFor="username">Username : </label>
-            <input type="text" name="username" id="username" placeholder="Type Username" minlength="5" onChange={e => setUserRegister({...userRegister, username: e.target.value})} value={userRegister.username}/>
+            <input type="text" name="username" id="username" placeholder="Type Username" minLength="5" onChange={e => setUserRegister({...userRegister, username: e.target.value})} value={userRegister.username}/>
             </div>
             <br></br>
             <div className='form-group'>
             <label htmlFor="password">Password : </label>
-            <input type="text" name="password" id="password" placeholder="Type Password" minlength="5" onChange={e => setUserRegister({...userRegister, password: e.target.value})} value={userRegister.password}/>
+            <input type="text" name="password" id="password" placeholder="Type Password" minLength="5" onChange={e => setUserRegister({...userRegister, password: e.target.value})} value={userRegister.password}/>
             </div>
            <br></br>
             {/* <label for="password-confirm">Confirm Password : </label>
@@ -83,7 +84,7 @@ function SignUp() {
             <input type="text" name="profileImage" id="profileImage" placeholder="Add your profile image here ..." onChange={e => setUserRegister({...userRegister, profileImage: e.target.value})} value={userRegister.profileImage}/>
             </div>
             <br></br>
-            <p> {errorResponse.status === 400 && errorResponse.data.data.username} </p>
+            {/* <p> {errorResponse.status === 400 && errorResponse.data.data.username} </p> */}
             <input type="submit" value="Sign Up" onSubmit={registerUser}/>
             {/* <div>
                 <input type="checkbox" name="terms" id="terms" required/>

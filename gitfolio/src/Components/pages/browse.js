@@ -10,11 +10,12 @@ const [profiles, setProfiles] = useState("")
 
 useEffect(() => {
     client
-      .get(`/user`)
+      .getAll(`/user`)
       .then((res) => {
         setProfiles(res.data.data);
         // console.log('id is valid? : ', isValidId)
-        // console.log('USER Data -> ', res.data.data)
+        console.log('USER Data -> ', res.data.data)
+        console.log('res.data.data[0].userName ->', res.data.data[0].userName)
         // setAddExercise({...addExercise, profileId: res.data.data.profileId})
       })
       .catch((err) => {

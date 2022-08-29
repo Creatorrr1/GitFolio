@@ -7,7 +7,7 @@ import './signIn.css'
 import { loggedInUserContext } from '../../helper/loggedInUserContext.js';
 
 
-function SignIn({Login, fetchedExercises}) {
+function SignIn({ userId, setUserId }) {
 
     // const [user, setUser] = useState({});
     const [details, setDetails] = useState({ username: "", password: "", email: "" })
@@ -21,43 +21,37 @@ function SignIn({Login, fetchedExercises}) {
         setLoginResponse({ data: { token: loadedToken } });
     }, []);
 
-    const loginUser = (event) => {
-        console.log('in loginUser() and making request')
-        client
-          .post('/login', details, false)
-        //   .then((data) => data.json())
-          .then((res) => {
-            localStorage.setItem(
-              process.env.REACT_APP_USER_TOKEN,
-              res.data.data.token
-            );
+    const loginUser = (e) => {
+      console.log('in loginUser() and making request')
+      client
+        .post('/login', details, false)
+        // .then((data) => data.json())
+        .then((res) => {
+          localStorage.setItem(
+            process.env.REACT_APP_USER_TOKEN,
+            res.data.data.token
+          );
             localStorage.setItem(
               'loggedInUser',
-              JSON.stringify(res.data.data.data)
-            );
-            console.log('res -> ',res.data.data)
-            setLoggedInUser(res.data.data.data);
-            // saveFetchedExerciseData(res.data.data.favouriteExercises)
-            console.log('USERId -->', res.data.data.data.id)
-            navigate(`../profile/${loggedInUser.id}`, { replace: true });
-            Login(res.data.data.data.id)
-          })
-          .catch((err) => {
-            console.log('err response in catch ->', err)
-            // setLoginError(err.response.status, err.response.data.message);
-          });
+            JSON.stringify(res.data.data.data)
+          );
+          console.log('res -> ',res.data.data)
+          setLoggedInUser(res.data.data.data);
+          // saveFetchedExerciseData(res.data.data.favouriteExercises)
+          console.log('USERId -->', res.data.data.data.id)
+          setUserId(res.data.data.data.id)
+          navigate(`../profile/${res.data.data.data.id}`, { replace: true });
+        })
+        .catch((err) => {
+          console.log('err response in catch ->', err)
+          // setLoginError(err.response.status, err.response.data.message);
+        });
     };
 
     const submitHandler = e => {
         e.preventDefault();
-        Login(details)
-        console.log(loginResponse)
+        // console.log(loginResponse)
         loginUser()
-        // return loginUser
-    }
-
-    const saveFetchedExerciseData = data => {
-        fetchedExercises(data)
     }
 
     return (

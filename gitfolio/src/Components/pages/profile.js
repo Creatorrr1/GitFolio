@@ -8,7 +8,7 @@ import client from "../../client";
 // import TextField from '@mui/material/TextField';
 // import Button from '@mui/material/Button';
 
-function Profile({favouriteExercises, setFavouriteExercises, userID}) {
+function Profile() {
     const { loggedInUser } = useContext(loggedInUserContext);
     const [userData, setUserData] = useState({});
     const [isValidId, setIsValidId] = useState(true);
