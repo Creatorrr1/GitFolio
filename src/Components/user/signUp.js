@@ -34,7 +34,7 @@ function SignUp() {
     .catch((err) => { 
       console.log('in catch')
       console.log('err ->',err)
-      setErrorResponse(err.response)
+      // setErrorResponse(err.response)
     });
   };
 
