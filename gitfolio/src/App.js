@@ -31,7 +31,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/sign-in" element={<SignIn userId={userId} SetUserId={setUserId} />} />
-          <Route path="/profile/:id" element={<Profile />} />
+          <Route path={`/profile/${loggedInUser.id}`} element={<Profile />} />
           <Route path="/browse" element={<Browse />} />
           <Route path="*" element={<Navigate replace to="/" />} />
         </Routes>
