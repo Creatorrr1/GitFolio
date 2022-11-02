@@ -35,7 +35,7 @@ function SignIn({ userId, setUserId }) {
         setLoggedInUser(res.data.data.data)
         // saveFetchedExerciseData(res.data.data.favouriteExercises)
         console.log("USERId -->", res.data.data.data.id)
-        setUserId(res.data.data.data.id)
+        // setUserId(res.data.data.data.id)
         navigate(`../profile/${res.data.data.data.id}`, { replace: true })
       })
       .catch((err) => {

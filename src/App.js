@@ -26,7 +26,9 @@ function App() {
           setLoggedInUser,
         }}
       >
-        <HeaderNav userId={userId} />
+        <HeaderNav 
+        // userId={userId} 
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sign-up" element={<SignUp />} />

@@ -93,8 +93,12 @@
     width: 239px;
     background-color: white;
     /* color: white; */
-    border: 2px solid black;
+    /* border: 2px solid black; */
     /* justify-items: center; */
+    border-radius: 50px;
+    background: #e0e0e0;
+    /* box-shadow:  9px 9px 17px rgb(91, 49, 243), */
+                /* -9px -9px 17px #397bff; */
 }
 
 div .user-info-box {
@@ -105,12 +109,34 @@ div .user-info-box {
 }
 
 .user-info-bio-box {
-    height: 100px;
+    height: 75px;
     width: 239px;
     background-color: white;
     /* color: white; */
-    border: 2px solid black;
+    /* border: 2px solid black; */
+    padding-top: 10px;
     margin-bottom: 10px;
+    /* border-radius: 50px; */
+    background: #e0e0e0;
+    /* box-shadow:  9px 9px 17px rgb(91, 49, 243), */
+                /* -9px -9px 17px #397bff; */
+    border-radius: 50px;
+    border-width: 0;
+    box-shadow: rgba(63, 27, 222, 0.04) 0 0 1px 0, rgba(63, 39, 197, 0.1) 0 3px 4px 0;
+}
+
+.user-info-box:hover {
+    background-color: #a5c1fa;
+    /* background-color: #397bff; */
+    transform: scale(1.05);
+}
+.user-info-bio-box:hover {
+    background-color: #a5c1fa;
+    transform: scale(1.05);
+}
+.exercise-input:hover {
+    background-color: #a5c1fa;
+    transform: scale(1.05);
 }
 
 .gap {
@@ -283,3 +309,61 @@ form:after {
     padding-bottom: 15px;
     cursor: pointer;
 }
+
+
+.new-user-info-box-tools {
+    color: #333;
+    font-family: CerebriSans-Regular, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    font-size: 100%;
+  }
+  
+  .svg-inline--fa {
+    display: inline-block;
+    font-size: inherit;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -.125em;
+  }
+  
+  .btn {
+    border-radius: 50px;
+    border-style: initial;
+    border-width: 0;
+    box-shadow: rgba(25, 25, 25, .04) 0 0 1px 0, rgba(0, 0, 0, .1) 0 3px 4px 0;
+    font-family: Arial, sans-serif;
+    font-size: 1em;
+    height: 50px;
+    padding: 0 25px;
+  }
+  
+  .demo-btn {
+    background-color: #c2fbd7;
+    color: green;
+    cursor: pointer;
+    display: none;
+    transition: all 200ms;
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .demo-btn {
+      display: inline-block;
+    }
+  }
+  
+  .btn svg {
+    margin-right: .5em;
+  }
+  
+  .demo-btn:hover {
+    background-color: #afe6c3;
+    transform: scale(1.05);
+  }
+  
+  .svg-inline--fa.fa-w-18 {
+    width: 1.125em;
+  }
+  
+  svg:not(:root).svg-inline--fa {
+    overflow: visible;
+  }
+  
