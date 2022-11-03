@@ -91,3 +91,20 @@ video .video-2 {
     /* background-color: #397bff; */
     transform: scale(1.05);
 }
+
+.signBtn {
+    margin-top: 30px;
+    width: 100px;
+    height: 45px;
+    background: #a5c1fa;
+    border-radius: 20px;
+    transition: all 1s;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.4);
+}
+
+.signBtn:hover {
+    background-color: #457cec;
+    /* background-color: #397bff; */
+    transform: scale(1.05);
+    box-shadow: 0 0 25px 0 rgba(34, 1, 111, 0.4);
+}

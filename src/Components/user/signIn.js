@@ -89,7 +89,7 @@ function SignIn({ userId, setUserId }) {
             </div>
             <br></br>
             {loginError && <div className="error">{loginError}</div>}
-            <input type="submit" value="LOGIN" onSubmit={submitHandler} />
+            <input type="submit" value="LOGIN" onSubmit={submitHandler} className="signBtn"/>
           </div>
         </form>
       </div>

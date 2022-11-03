@@ -59,7 +59,7 @@ function SignUp() {
                 type="text"
                 name="username"
                 id="username"
-                placeholder="Type Username"
+                placeholder="  Type Username"
                 minLength="5"
                 onChange={(e) => setUserRegister({ ...userRegister, username: e.target.value })}
                 value={userRegister.username}
@@ -73,7 +73,7 @@ function SignUp() {
                 type="text"
                 name="password"
                 id="password"
-                placeholder="Type Password"
+                placeholder="  Type Password"
                 minLength="5"
                 onChange={(e) => setUserRegister({ ...userRegister, password: e.target.value })}
                 value={userRegister.password}
@@ -90,7 +90,7 @@ function SignUp() {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Type email"
+                placeholder="  Type email"
                 onChange={(e) => setUserRegister({ ...userRegister, email: e.target.value })}
                 value={userRegister.email}
                 className="form-box"
@@ -103,7 +103,7 @@ function SignUp() {
                 type="text"
                 name="firstname"
                 id="firstname"
-                placeholder="Type firstname"
+                placeholder="  Type firstname"
                 onChange={(e) => setUserRegister({ ...userRegister, firstname: e.target.value })}
                 value={userRegister.firstname}
                 className="form-box"
@@ -116,7 +116,7 @@ function SignUp() {
                 type="text"
                 name="lastame"
                 id="lastame"
-                placeholder="Type lastname"
+                placeholder="  Type lastname"
                 onChange={(e) => setUserRegister({ ...userRegister, lastname: e.target.value })}
                 value={userRegister.lastname}
                 className="form-box"
@@ -129,7 +129,7 @@ function SignUp() {
                 type="text"
                 name="bio"
                 id="bio"
-                placeholder="Type your Bio here ..."
+                placeholder="  Type your Bio here ..."
                 onChange={(e) => setUserRegister({ ...userRegister, bio: e.target.value })}
                 value={userRegister.bio}
                 className="form-box"
@@ -142,7 +142,7 @@ function SignUp() {
                 type="text"
                 name="profileImage"
                 id="profileImage"
-                placeholder="Add your profile image here ..."
+                placeholder="  Add your profile image here ..."
                 onChange={(e) => setUserRegister({ ...userRegister, profileImage: e.target.value })}
                 value={userRegister.profileImage}
                 className="form-box"
@@ -150,7 +150,7 @@ function SignUp() {
             </div>
             <br></br>
             {/* <p> {errorResponse.status === 400 && errorResponse.data.data.username} </p> */}
-            <input type="submit" value="Sign Up" onSubmit={registerUser} />
+            <input type="submit" value="Sign Up" onSubmit={registerUser} className="signBtn"/>
             {/* <div>
                 <input type="checkbox" name="terms" id="terms" required/>
                 <label for="terms">I accept the <a>Terms And Conditions.</a></label>
