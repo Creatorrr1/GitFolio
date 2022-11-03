@@ -67,6 +67,7 @@ function SignIn({ userId, setUserId }) {
                 id="username"
                 onChange={(e) => setDetails({ ...details, username: e.target.value })}
                 value={details.username}
+                className="form-box"
               />
             </div>
             <br></br>
@@ -78,12 +79,13 @@ function SignIn({ userId, setUserId }) {
                 id="password"
                 onChange={(e) => setDetails({ ...details, password: e.target.value })}
                 value={details.password}
+                className="form-box"
               />
             </div>
             <br></br>
             <div className="form-group">
               <label htmlFor="email">Email: </label>
-              <input type="text" name="email" id="email" onChange={(e) => setDetails({ ...details, email: e.target.value })} value={details.email} />
+              <input type="text" name="email" id="email" onChange={(e) => setDetails({ ...details, email: e.target.value })} value={details.email} className="form-box"/>
             </div>
             <br></br>
             {loginError && <div className="error">{loginError}</div>}

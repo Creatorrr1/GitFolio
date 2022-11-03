@@ -63,6 +63,7 @@ function SignUp() {
                 minLength="5"
                 onChange={(e) => setUserRegister({ ...userRegister, username: e.target.value })}
                 value={userRegister.username}
+                className="form-box"
               />
             </div>
             <br></br>
@@ -76,6 +77,7 @@ function SignUp() {
                 minLength="5"
                 onChange={(e) => setUserRegister({ ...userRegister, password: e.target.value })}
                 value={userRegister.password}
+                className="form-box"
               />
             </div>
             <br></br>
@@ -91,6 +93,7 @@ function SignUp() {
                 placeholder="Type email"
                 onChange={(e) => setUserRegister({ ...userRegister, email: e.target.value })}
                 value={userRegister.email}
+                className="form-box"
               />
             </div>
             <br></br>
@@ -103,6 +106,7 @@ function SignUp() {
                 placeholder="Type firstname"
                 onChange={(e) => setUserRegister({ ...userRegister, firstname: e.target.value })}
                 value={userRegister.firstname}
+                className="form-box"
               />
             </div>
             <br></br>
@@ -115,6 +119,7 @@ function SignUp() {
                 placeholder="Type lastname"
                 onChange={(e) => setUserRegister({ ...userRegister, lastname: e.target.value })}
                 value={userRegister.lastname}
+                className="form-box"
               />
             </div>
             <br></br>
@@ -127,6 +132,7 @@ function SignUp() {
                 placeholder="Type your Bio here ..."
                 onChange={(e) => setUserRegister({ ...userRegister, bio: e.target.value })}
                 value={userRegister.bio}
+                className="form-box"
               />
             </div>
             <br></br>
@@ -139,6 +145,7 @@ function SignUp() {
                 placeholder="Add your profile image here ..."
                 onChange={(e) => setUserRegister({ ...userRegister, profileImage: e.target.value })}
                 value={userRegister.profileImage}
+                className="form-box"
               />
             </div>
             <br></br>
