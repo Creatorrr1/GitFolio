@@ -53,7 +53,7 @@ function HeaderNav({ userId }) {
           <div class="nav-box auto-column-grid-header gap">
             <div class="inner-nav-search search-icon">
               {/* <form className='two-column-grid__expand-one'> */}
-              <input type="text" name="text" className="search-box"></input>
+              <input type="text" name="text" placeholder=" search ..." className="new-search-box"></input>
               <input type="submit" name="search" className="search" onClick={findProfile}></input>
               {/* </form> */}
             </div>
